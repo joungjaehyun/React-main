@@ -1,7 +1,7 @@
 import axios from "axios"
 import { createSearchParams } from "react-router-dom"
 
-const API_URL="http://apiserver-env.eba-mvimwyru.ap-northeast-2.elasticbeanstalk.com"
+const API_URL="http://apiserver-env.eba-mvimwyru.ap-northeast-2.elasticbeanstalk.com:5000"
 
 export const getFarmerList = async (queryObj) =>{
 
