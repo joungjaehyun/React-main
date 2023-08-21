@@ -8,13 +8,6 @@ export const getFarmerList = async (queryObj) =>{
     const parameter = createSearchParams(queryObj).toString()
 
     console.log("getFarmerList.........................")
-    console.log(parameter)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
 
 
     const res = await axios.get(`${API_URL}/api/admin/farmer?${parameter}`)
@@ -25,12 +18,7 @@ export const getFarmerList = async (queryObj) =>{
 export const getConsumerList = async (queryObj) =>{
 
     console.log("getConsumerList.........................")
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
-    console.log(queryObj)
+
 
     const parameter = createSearchParams(queryObj).toString()
 
@@ -82,13 +70,6 @@ export const getMemberOne = async (mno) => {
 }
 
 export const getReplyList = async (bno , page = 1 , last = false) =>{
-
-    console.log("=====================================================================");
-    console.log(bno);
-    console.log(page);
-    console.log(last);
-    console.log("=====================================================================");
-
     const res = await axios.get(`${API_URL}/api/replies/${bno}/list?page=${page}&last=${last}`)
     return res.data
 
