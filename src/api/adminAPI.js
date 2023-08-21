@@ -1,6 +1,8 @@
 import axios from "axios"
 import { createSearchParams } from "react-router-dom"
 
+const API_URL="http://apiserver-env.eba-mvimwyru.ap-northeast-2.elasticbeanstalk.com"
+
 export const getFarmerList = async (queryObj) =>{
 
     const parameter = createSearchParams(queryObj).toString()
@@ -15,7 +17,7 @@ export const getFarmerList = async (queryObj) =>{
     console.log(queryObj)
 
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/admin/farmer?${parameter}`)
+    const res = await axios.get(`${API_URL}/api/admin/farmer?${parameter}`)
     return res.data
     
 }
@@ -32,7 +34,7 @@ export const getConsumerList = async (queryObj) =>{
 
     const parameter = createSearchParams(queryObj).toString()
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/admin/consumer?${parameter}`)
+    const res = await axios.get(`${API_URL}/api/admin/consumer?${parameter}`)
     return res.data
     
 }
@@ -42,7 +44,7 @@ export const getBoardList = async (queryObj) =>{
 
     const parameter = createSearchParams(queryObj).toString()
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/board/list?${parameter}`)
+    const res = await axios.get(`${API_URL}/api/board/list?${parameter}`)
     
     return res.data
 
@@ -52,7 +54,7 @@ export const getBoardListbyWriter = async (mno,queryObj) =>{
 
     const parameter = createSearchParams(queryObj).toString()
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/board/list/${mno}?${parameter}`)
+    const res = await axios.get(`${API_URL}/api/board/list/${mno}?${parameter}`)
     
     return res.data
 }
@@ -60,21 +62,21 @@ export const getBoardListbyWriter = async (mno,queryObj) =>{
 
 export const getBoardOne = async (bno) =>{
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/board/${bno}`)
+    const res = await axios.get(`${API_URL}/api/board/${bno}`)
     return res.data
 
 }
 
 export const addBoard = async () =>{
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/admin/consumer`)
+    const res = await axios.get(`${API_URL}/api/admin/consumer`)
     return res.data
 
 }
 
 export const getMemberOne = async (mno) => {
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/admin/memberOne`)
+    const res = await axios.get(`${API_URL}/api/admin/memberOne`)
     return res.data
     
 }
@@ -87,21 +89,21 @@ export const getReplyList = async (bno , page = 1 , last = false) =>{
     console.log(last);
     console.log("=====================================================================");
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/replies/${bno}/list?page=${page}&last=${last}`)
+    const res = await axios.get(`${API_URL}/api/replies/${bno}/list?page=${page}&last=${last}`)
     return res.data
 
 }
 
 export const readMember = async (mno) =>{
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/admin/read/${mno}`)
+    const res = await axios.get(`${API_URL}/api/admin/read/${mno}`)
     return res.data
 
 }
 
 export const deleteMember = async (mno) =>{
 
-    const res = await axios.delete(`http://192.168.0.48:8080/api/admin/${mno}`)
+    const res = await axios.delete(`${API_URL}/api/admin/${mno}`)
     return res.data
 
 }
@@ -111,7 +113,7 @@ export const insertReply = async (reply) => {
     console.log(reply)
 
 
-    const res = await axios.post(`http://192.168.0.48:8080/api/replies/`, reply)
+    const res = await axios.post(`${API_URL}/api/replies/`, reply)
   
     return res.data
   
@@ -123,7 +125,7 @@ export const getReplyOne = async (rno) => {
 
     console.log(rno)
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/replies/${rno}`)
+    const res = await axios.get(`${API_URL}/api/replies/${rno}`)
   
     return res.data
   
@@ -133,7 +135,7 @@ export const getReplyOne = async (rno) => {
 
     console.log(reply)
 
-    const res = await axios.put(`http://192.168.0.48:8080/api/replies/`, reply)
+    const res = await axios.put(`${API_URL}/api/replies/`, reply)
   
     return res.data
     
@@ -143,7 +145,7 @@ export const getReplyOne = async (rno) => {
 
     console.log(rno)
 
-    const res = await axios.delete(`http://192.168.0.48:8080/api/replies/${rno}`)
+    const res = await axios.delete(`${API_URL}/api/replies/${rno}`)
   
     return res.data
     
@@ -154,21 +156,21 @@ export const getReplyOne = async (rno) => {
 
     const parameter = createSearchParams(queryObj).toString()
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/products/list?${parameter}`)
+    const res = await axios.get(`${API_URL}/api/products/list?${parameter}`)
     return res.data
     
   }
 
   export const readProduct = async (pno) =>{
 
-    const res = await axios.get(`http://192.168.0.48:8080/api/products/${pno}`)
+    const res = await axios.get(`${API_URL}/api/products/${pno}`)
     return res.data
 
 }
 
     export const deleteProduct = async (pno) =>{
 
-    const res = await axios.delete(`http://192.168.0.48:8080/api/products/${pno}`)
+    const res = await axios.delete(`${API_URL}/api/products/${pno}`)
     return res.data
 
 }
@@ -181,7 +183,7 @@ export const getReplyOne = async (rno) => {
             }
         }
 
-        const res = await axios.post(`http://192.168.0.48:8080/api/products/`, FormData, header)
+        const res = await axios.post(`${API_URL}/api/products/`, FormData, header)
         return res.data
 
 }
@@ -190,7 +192,7 @@ export const getReplyOne = async (rno) => {
 
         const parameter = createSearchParams(queryObj).toString()
 
-        const res = await axios.get(`http://192.168.0.48:8080/api/products/list/${mno}?${parameter}`)
+        const res = await axios.get(`${API_URL}/api/products/list/${mno}?${parameter}`)
         return res.data
 
 }
@@ -198,7 +200,7 @@ export const getReplyOne = async (rno) => {
     // board
     export const deleteBoard = async (bno) =>{
 
-        const res = await axios.delete(`http://192.168.0.48:8080/api/board/${bno}`)
+        const res = await axios.delete(`${API_URL}/api/board/${bno}`)
         return res.data
     
     }
@@ -212,7 +214,7 @@ export const getReplyOne = async (rno) => {
                 }
     }
 
-    const res = await axios.post('http://192.168.0.48:8080/api/member/login', params, header)
+    const res = await axios.post(`${API_URL}/api/member/login`, params, header)
 
     return res.data
     
@@ -230,7 +232,7 @@ export const getReplyOne = async (rno) => {
     console.log(params);
     console.log("===========================================")
   
-    const res = await axios.post('http://192.168.0.48:8080/api/admin',params,header)
+    const res = await axios.post(`${API_URL}/api/admin`,params,header)
   
     return res.data
     
@@ -243,7 +245,7 @@ export const getReplyOne = async (rno) => {
         console.log(pno)
         console.log(page)
 
-        const res = await axios.get(`http://192.168.0.48:8080/api/reviews/${pno}/list?page=${page}`)
+        const res = await axios.get(`${API_URL}/api/reviews/${pno}/list?page=${page}`)
         return res.data
 
 }
@@ -256,28 +258,28 @@ export const getReplyOne = async (rno) => {
             }
         }
 
-        const res = await axios.post(`http://192.168.0.48:8080/api/reviews`, formData, header)
+        const res = await axios.post(`${API_URL}/api/reviews`, formData, header)
         return res.data
 
 }
 
     export const readReview = async (rno) =>{
 
-        const res = await axios.get(`http://192.168.0.48:8080/api/reviews/${rno}`)
+        const res = await axios.get(`${API_URL}/api/reviews/${rno}`)
         return res.data
 
 }
 
     export const deleteReview = async (rno) =>{
 
-        const res = await axios.delete(`http://192.168.0.48:8080/api/reviews/${rno}`)
+        const res = await axios.delete(`${API_URL}/api/reviews/${rno}`)
         return res.data
 
 }
 
     export const modifyReview = async (formData) =>{
 
-        const res = await axios.put(`http://192.168.0.48:8080/api/reviews`, formData)
+        const res = await axios.put(`${API_URL}/api/reviews`, formData)
         return res.data
 
 }
